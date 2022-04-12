@@ -1,5 +1,5 @@
 package cinematicketdispenser;
 
-public class CinemaTicketDispenser {
+public class MainMenu {
     
 }
