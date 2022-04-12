@@ -1,0 +1,1 @@
+Práctica de POO, programación de un dispensador de tickets de cine.
