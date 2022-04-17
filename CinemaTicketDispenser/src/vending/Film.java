@@ -1,4 +1,4 @@
-package cinematicketdispenser;
+package vending;
 
 public class Film {
     
