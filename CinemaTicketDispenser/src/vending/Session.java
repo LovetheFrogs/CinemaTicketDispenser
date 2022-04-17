@@ -3,8 +3,8 @@ package vending;
 import auxclasses.Pair;
 import java.util.HashSet;
 
-public class Session {
-    private Pair hour;
+public class Session implements Serializable{
+    private final Pair hour;
     private HashSet<Seat> occupiedSeatSet;
     
     public Session(int x, int y){
@@ -14,7 +14,7 @@ public class Session {
     
     public boolean isOccupied(int x, int y){
         Seat toCheck = new Seat(x, y);
-        return this.occupiedSeatSet.contains(toChech);
+        return this.occupiedSeatSet.contains(toCheck);
     }
     
     public void occupiesSeat(int x, int y){
