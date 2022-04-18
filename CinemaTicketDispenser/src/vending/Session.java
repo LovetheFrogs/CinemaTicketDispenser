@@ -14,7 +14,7 @@ public class Session {
     
     public boolean isOccupied(int x, int y){
         Seat toCheck = new Seat(x, y);
-        return this.occupiedSeatSet.contains(toChech);
+        return this.occupiedSeatSet.contains(toCheck);
     }
     
     public void occupiesSeat(int x, int y){
@@ -29,5 +29,9 @@ public class Session {
     public void unoccupiesSeat(int x, int y){
         Seat toRemove = new Seat(x, y);
         this.occupiedSeatSet.remove(toRemove);
+    }
+    
+    public void resetSeats(){
+        occupiedSeatSet = new HashSet<>(); 
     }
 }
