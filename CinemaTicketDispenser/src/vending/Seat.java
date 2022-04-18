@@ -1,6 +1,6 @@
 package vending;
 
-public class Seat {
+public class Seat implements Serializable{
     private int row;
     private int col;
     
