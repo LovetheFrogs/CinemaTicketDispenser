@@ -1,4 +1,5 @@
 package vending;
+import java.io.Serializable;
 
 public class Seat implements Serializable{
     private int row;
