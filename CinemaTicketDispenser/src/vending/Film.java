@@ -1,5 +1,7 @@
 package vending;
 
+import java.io.Serializable;
+
 public class Film implements Serializable{
     
     private final String name;

@@ -1,6 +1,7 @@
 package vending;
 
 import auxclasses.Pair;
+import java.io.Serializable;
 import java.util.HashSet;
 
 public class Session implements Serializable{
