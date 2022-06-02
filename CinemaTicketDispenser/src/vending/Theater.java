@@ -1,21 +1,23 @@
 package vending;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Theater implements Serializable{
     
-    private int number;
-    private int price;
+    private String number;
+    private String price;
     private HashSet<Seat> seatSet;
     private ArrayList<Session> sessions;
-    private Film filmList;
+    private Film film;
     
-    public Theater(int number, int price, Film filmList){
-        this.number = number;
-        this.price = price;
+    public Theater(String fileFilm, String fileTheater) throws Exception{
+        this.film = new Film(fileFilm);
+        this.number = film.getTheater();
+        this.price = film.getPrice();
         this.seatSet = new HashSet<>();
-        this.filmList = filmList;
+        this.sessions
     }
     
     public int getNumber(){
