@@ -1,15 +1,14 @@
 package vending;
 
-import auxclasses.Pair;
 import java.io.Serializable;
 import java.util.HashSet;
 
 public class Session implements Serializable{
-    private final Pair hour;
+    private final String hour;
     private HashSet<Seat> occupiedSeatSet;
     
-    public Session(int x, int y){
-        this.hour = new Pair(x, y);
+    public Session(String hour){
+        this.hour = hour;
         this.occupiedSeatSet = new HashSet<>();
     }
     
@@ -23,7 +22,7 @@ public class Session implements Serializable{
         this.occupiedSeatSet.add(toAdd);
     }
     
-    public Pair getHour(){
+    public String getHour(){
         return this.hour;
     }
     
