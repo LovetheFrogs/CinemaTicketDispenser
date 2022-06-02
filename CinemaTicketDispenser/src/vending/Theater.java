@@ -1,5 +1,7 @@
 package vending;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,15 +18,15 @@ public class Theater implements Serializable{
         this.film = new Film(fileFilm);
         this.number = film.getTheater();
         this.price = film.getPrice();
-        this.seatSet = new HashSet<>();
-        this.sessions
+        this.seatSet = loadSeats(fileTheater);
+        this.sessions = film.getSessions();
     }
     
-    public int getNumber(){
+    public String getNumber(){
         return number;
     }
     
-    public int getPrice(){
+    public String getPrice(){
         return price;
     }
     
@@ -33,7 +35,7 @@ public class Theater implements Serializable{
     }
     
     public Film getFilm(){
-        return filmList;
+        return film;
     }
     
     public ArrayList<Session> getSessionList(){
@@ -50,7 +52,6 @@ public class Theater implements Serializable{
             if(element.getRow() > max)
                 max = element.getRow();
         }
-        
         return max;
     }
     
@@ -60,14 +61,22 @@ public class Theater implements Serializable{
             if(element.getCol() > max)
                 max = element.getCol();
         }
-        
         return max;
     }
     
-    public void loadSeats(){
-        for(int i = 0; i < sessions.size(); i++){
-            sessions.get(i).resetSeats();
+    public HashSet<Seat> loadSeats(String filename) throws Exception{
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+        HashSet<Seat> seats = new HashSet<>();
+        String[] line;
+        int i = 0;
+        while((line = br.readLine().split("\\s+")) != null){
+            for(int j = 0; j < line.length; j++){
+                if(line[j] == "*"){
+                    seats.add(new Seat(i, j));
+                }
+            }
+            i++;
         }
-    }
-    
+        return seats;
+    }   
 }
