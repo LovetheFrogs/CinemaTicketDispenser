@@ -1,6 +1,6 @@
 package vending;
 
-import java.io.*;
+import java.io.Serializable;
 
 public class Film implements Serializable{
     
