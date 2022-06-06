@@ -13,8 +13,11 @@ public class Session implements Serializable{
     }
     
     public boolean isOccupied(int x, int y){
-        Seat toCheck = new Seat(x, y);
-        return this.occupiedSeatSet.contains(toCheck);
+        for (Seat seat : this.occupiedSeatSet) {
+            if (seat.getRow() == x && seat.getCol() == y)
+                return true;
+        }
+        return false;
     }
     
     public void occupiesSeat(int x, int y){

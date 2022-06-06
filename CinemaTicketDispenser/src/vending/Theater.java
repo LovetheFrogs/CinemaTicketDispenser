@@ -14,11 +14,12 @@ public class Theater implements Serializable{
     private ArrayList<Session> sessions;
     private Film film;
     
-    public Theater(String fileFilm, String fileTheater) throws Exception{
+    public Theater(String fileFilm) throws Exception{
         this.film = new Film(fileFilm);
         this.number = film.getTheater();
         this.price = film.getPrice();
-        this.seatSet = loadSeats(fileTheater);
+        String path = "./files/Theater" + this.number + ".txt";
+        this.seatSet = loadSeats(path);
         this.sessions = film.getSessions();
     }
     
@@ -64,15 +65,17 @@ public class Theater implements Serializable{
         return max;
     }
     
-    public HashSet<Seat> loadSeats(String filename) throws Exception{
+    public HashSet<Seat> loadSeats(String filename) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         HashSet<Seat> seats = new HashSet<>();
-        String[] line;
-        int i = 0;
-        while((line = br.readLine().split("\\s+")) != null){
+        String lineRead;
+        char[] line;
+        int i = 1;
+        while((lineRead = br.readLine()) != null){
+            line = lineRead.toCharArray();
             for(int j = 0; j < line.length; j++){
-                if(line[j] == "*"){
-                    seats.add(new Seat(i, j));
+                if(line[j] == '*'){
+                    seats.add(new Seat(i, j + 1));
                 }
             }
             i++;
