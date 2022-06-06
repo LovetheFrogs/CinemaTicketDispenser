@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Film implements Serializable{
     
@@ -18,7 +17,7 @@ public class Film implements Serializable{
     public Film(String fileFilm) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(fileFilm));
         
-        this.theater = br.readLine().replace("Theater: ", "");
+        this.theater = br.readLine().replace("Theatre: ", "");
         br.readLine();
         
         this.name = br.readLine().replace("Title: ", "");
@@ -28,7 +27,8 @@ public class Film implements Serializable{
         br.readLine();
         
         this.sessions = new ArrayList<>();
-        String[] aux = br.readLine().replace("Sessions: ", "").split("\\s+");
+        String auuux = br.readLine().replace("Sessions: ", "");
+        String[] aux = auuux.split("\\s+");
         for (int i = 0; i < aux.length; i++){
             this.sessions.add(new Session(aux[i]));
         }
@@ -37,7 +37,7 @@ public class Film implements Serializable{
         this.poster = br.readLine().replace("Poster: ", "");
         br.readLine();
         
-        this.price = br.readLine().replace("Price: ", "");
+        this.price = br.readLine().replace("Price: ", "").replace(" €", "");
         br.close();
     }
         

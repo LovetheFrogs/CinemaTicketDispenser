@@ -1,25 +1,27 @@
 package cinematicketdispenser;
 
+import sienens.CinemaTicketDispenser;
+
 public abstract class Operation {
     
-    private Multiplex multiplex;
-    private CinemaTicketDispenser dispenser;
-    
-    public Operation(CinemaTicketDispenser dispenser, Multiplex multiplex){
-        this.dispenser = dispenser;
-        this.multiplex = multiplex;
+    protected CinemaTicketDispenser disp;
+    protected Multiplex mult;
+
+    public Operation(CinemaTicketDispenser disp, Multiplex mult) {
+        this.disp = disp;
+        this.mult = mult;
+    }
+
+    public CinemaTicketDispenser getDisp() {
+        return disp;
+    }
+
+    public Multiplex getMult() {
+        return mult;
     }
     
-    public abstract boolean doOperation();
+    public abstract boolean doOperation() throws Exception;
     
     public abstract String getTitle();
-
-    public Multiplex getMultiplex() {
-        return multiplex;
-    }
-
-    public CinemaTicketDispenser getDispenser() {
-        return dispenser;
-    }
     
 }
